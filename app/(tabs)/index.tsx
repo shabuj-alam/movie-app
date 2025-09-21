@@ -6,6 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import {useRouter} from "expo-router";
 import useFetch from "@/services/useFetch";
 import {fetchMovies} from "@/services/api";
+import MovieCard from "@/components/MovieCard";
 
 export default function Index() {
 
@@ -23,7 +24,7 @@ export default function Index() {
     <View className="flex-1 bg-primary">
       <Image source={images.bg} className="absolute w-full z-0"/>
 
-        <View className="flex-1 px-5">
+        <ScrollView className="flex-1 px-5">
             <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto"/>
 
             {moviesLoading ? (
@@ -51,7 +52,7 @@ export default function Index() {
                             keyExtractor={(item)=> item.id.toString()}
                             numColumns={3}
                             renderItem={({item}) => (
-                                <Text className="text-white text-sm font-bold">{item.original_title}</Text>
+                                <MovieCard {...item}/>
                             )}
                             columnWrapperStyle={{
                                 justifyContent: 'flex-start',
@@ -63,7 +64,7 @@ export default function Index() {
                     </>
                 </View>
             )}
-        </View>
+        </ScrollView>
     </View>
   );
 }
