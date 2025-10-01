@@ -8,6 +8,7 @@ import useFetch from "@/services/useFetch";
 import {fetchMovies} from "@/services/api";
 import MovieCard from "@/components/MovieCard";
 import {getTrendingMovies} from "@/services/appwrite";
+import TrendingCard from "@/components/TrendingCard";
 
 export default function Index() {
 
@@ -49,7 +50,25 @@ export default function Index() {
                         placeholder = 'Search for a movie'
                     />
 
-                    {/*{trendingMovies && ()}*/}
+                    {trendingMovies && (
+                        <View className="mt-10">
+                            <Text className="text-white text-lg font-bold mt-5 mb-3">
+                                Trending Movies
+                            </Text>
+
+                            <FlatList
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                className="mb-4 mt-3"
+                                data={trendingMovies}
+                                ItemSeparatorComponent={()=> <View className="w-4"/>}
+                                keyExtractor={(item) => item.movieID.toString()}
+                                renderItem={({item, index}) => (
+                                    <TrendingCard movie={item} index={index}/>
+                                )}
+                            />
+                        </View>
+                    )}
 
                     <>
                         <Text className="text-white text-lg font-bold mt-5 mb-3">

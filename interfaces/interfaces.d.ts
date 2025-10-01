@@ -17,10 +17,10 @@ interface Movie {
 
 interface TrendingMovie {
   searchTerm: string;
-  movie_id: number;
-  title: string;
+  movieID: number;
+  movieTitle: string;
   count: number;
-  poster_url: string;
+  posterUrl: string;
 }
 
 interface MovieDetails {
