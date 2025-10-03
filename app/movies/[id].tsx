@@ -22,7 +22,7 @@ const MovieDetails = () => {
 
     const {
         data: movie,
-        loading
+        isLoading: movieLoading,
     } = useFetch(()=>
         fetchMovieDetails(id as string)
     )
