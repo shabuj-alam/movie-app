@@ -78,7 +78,9 @@ export default function Index() {
                         <FlatList
                             data={ movies }
                             keyExtractor={(item)=> item.id.toString()}
+                            scrollEnabled={false}
                             numColumns={3}
+                            className="mt-2 pb-32"
                             renderItem={({item}) => (
                                 <MovieCard {...item}/>
                             )}
